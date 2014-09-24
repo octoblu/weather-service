@@ -29,6 +29,9 @@ app.use express.static(path.join(__dirname, 'public'))
 
 app.use errorHandler()
 
+app.get '/temperature/c', temperatureController.celsius
+app.get '/temperature/celsius', temperatureController.celsius
+
 app.get '/temperature/f', temperatureController.fahrenheit
 app.get '/temperature/fahrenheit', temperatureController.fahrenheit
 

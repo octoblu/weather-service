@@ -1,17 +1,32 @@
 request = require 'request'
 
 class TemperatureController
+  celsius: (req, res) =>
+    location = req.query.location
+    @request 'metric', location, (error, response, body) =>
+      return res.status(500).send(error) if error?
+
+      res.status(body.cod)
+      return res.send(body.message) unless body.cod == 200
+      res.send "#{body.main.temp}"
+
   fahrenheit: (req, res) =>
+    location = req.query.location
+    @request 'imperial', location, (error, response, body) =>
+      return res.status(500).send(error) if error?
+
+      res.status(body.cod)
+      return res.send(body.message) unless body.cod == 200
+      res.send "#{body.main.temp}"
+
+  request: (units, location, callback=->) =>
     options =
       url: 'http://api.openweathermap.org/data/2.5/weather'
       json: true
       qs:
-        units: 'imperial'
-        q: req.query.location
+        units: units
+        q: location
 
-    request options, (error, response, body) =>
-      return res.send 500, error if error?
-      return res.send body.cod, body.message unless body.cod == 200
-      res.send 200, body.main.temp
+    request options, callback
 
 module.exports = TemperatureController

@@ -1,8 +1,10 @@
 request = require 'request'
+_       = require 'lodash'
 
 class TemperatureController
   celsius: (req, res) =>
-    location = req.query.location
+    {city, state, country} = req.query
+    location = _.compact([city, state, country]).join ','
     @request 'metric', location, (error, response, body) =>
       return res.status(500).send(error) if error?
 
@@ -11,7 +13,8 @@ class TemperatureController
       res.send "#{body.main.temp}"
 
   fahrenheit: (req, res) =>
-    location = req.query.location
+    {city, state, country} = req.query
+    location = _.compact([city, state, country]).join ','
     @request 'imperial', location, (error, response, body) =>
       return res.status(500).send(error) if error?
 

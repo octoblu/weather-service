@@ -34,6 +34,7 @@ app.get '/temperature/celsius', temperatureController.celsius
 
 app.get '/temperature/f', temperatureController.fahrenheit
 app.get '/temperature/fahrenheit', temperatureController.fahrenheit
+app.get '/', (req, res) -> res.status(200).send 'Sane Weather API'
 
 app.listen app.get('port'), ->
   console.log "Express server listening on port #{app.get('port')}"

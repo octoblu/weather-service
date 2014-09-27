@@ -1,0 +1,119 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>Octoblu Weather</title>
+  <meta charset="utf-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <link rel="stylesheet" type="text/css" href="//cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/3.1.1/css/bootstrap.min.css">
+  <link rel="stylesheet" type="text/css" href="/css/styles.css">
+</head>
+<body>
+  <div class="masthead-container">
+    <div class="masthead">
+      <div class="inner container">
+        <h3 class="masthead-brand"><a href="/">Octoblu Weather</a></h3>
+        <ul class="nav masthead-nav">
+          <li><a href="/">Home</a></li>
+          <li class="active"><a href="/api-documentation.html">API</a></li>
+          <li><a href="http://github.com/octoblu/weather-service">Source</a></li>
+        </ul>
+      </div>
+    </div>
+  </div>
+
+  <div class="container">
+    <div class="row">
+      <div class="col-xs-12">
+        <h1>API Documentation</h1>
+        <hr>
+
+        <h4>Temperature</h4>
+
+        <p>
+          <strong>Get the temperature in celsius or fahrenheit</strong>
+          <br>
+          Supports single letter varients because spelling celsius and fahrenheit is hard
+        </p>
+
+        <h4>Request</h4>
+<pre>GET /temperature/c
+GET /temperature/celsius
+GET /temperature/f
+GET /temperature/fahrenheit</pre>
+
+        <h4>Query Parameters</h4>
+        <p class="indented">
+          <strong>city</strong>
+          <em class="text-danger">required</em>
+          <br>
+          <span class="indented">string</span>
+        </p>
+
+        <p class="indented">
+          <strong>state</strong>
+          <br>
+          <span class="indented">string</span>
+        </p>
+
+        <p class="indented">
+          <strong>country</strong>
+          <em class="text-danger">required</em>
+          <br>
+          <span class="indented">string</span>
+        </p>
+
+        <h4>Response</h4>
+        <div class="panel panel-default">
+          <div class="panel-heading">
+            Status: 200 OK
+          </div>
+          <div class="panel-body">
+<pre>{
+  "temperature": 30.27
+}</pre>
+          </div>
+        </div>
+
+        <h4>Try It</h4>
+        <p><em>Celsius</em></p>
+        <p class="go-slow-btns">
+          <a href="/temperature/celsius?city=chandler&state=az&country=usa" class="btn btn-lg btn-black">Chandler, AZ, USA</a>
+          <a href="/temperature/celsius?city=paris&country=france" class="btn btn-lg btn-black">Paris, France</a>
+          <a href="/temperature/celsius?city=quebec%20city&state=quebec&country=canada" class="btn btn-lg btn-black">Quebec City, Quebec, Canada</a>
+        </p>
+
+        <br>
+
+        <p><em>Farenheit</em></p>
+        <p class="go-slow-btns">
+          <a href="/temperature/fahrenheit?city=chandler&state=az&country=usa" class="btn btn-lg btn-black">Chandler, AZ, USA</a>
+          <a href="/temperature/fahrenheit?city=paris&country=france" class="btn btn-lg btn-black">Paris, France</a>
+          <a href="/temperature/fahrenheit?city=quebec%20city&state=quebec&country=canada" class="btn btn-lg btn-black">Quebec City, Quebec, Canada</a>
+        </p>
+      </div>
+    </div>
+  </div>
+
+  <br>
+  <br>
+
+<!--
+  <script type="text/javascript" src="/js/jquery.js"></script>
+  <script type="text/javascript" src="/js/bootstrap.js"></script>
+  <script type="text/javascript" src="/js/holder.js"></script>
+ -->
+  <script type="text/javascript" src="//cdnjs.cloudflare.com/ajax/libs/jquery/2.1.1/jquery.min.js"></script>
+  <script type="text/javascript" src="//cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/3.1.1/js/bootstrap.min.js"></script>
+  <script type="text/javascript" src="//cdnjs.cloudflare.com/ajax/libs/holder/2.3.1/holder.min.js"></script>
+  <script>
+    (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
+    (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+    m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+    })(window,document,'script','//www.google-analytics.com/analytics.js','ga');
+
+    ga('create', 'UA-51344475-2', 'goslow4.me');
+    ga('send', 'pageview');
+  </script>
+</body>
+</html>

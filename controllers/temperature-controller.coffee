@@ -10,7 +10,7 @@ class TemperatureController
 
       res.status(body.cod)
       return res.send(body.message) unless body.cod == 200
-      res.send temperature: body.main.temp
+      res.send temperature: body.main.temp, city: city, state: state, country: country
 
   fahrenheit: (req, res) =>
     {city, state, country} = req.query
@@ -20,7 +20,7 @@ class TemperatureController
 
       res.status(body.cod)
       return res.send(body.message) unless body.cod == 200
-      res.send temperature: body.main.temp
+      res.send temperature: body.main.temp, city: city, state: state, country: country
 
   request: (units, location, callback=->) =>
     options =

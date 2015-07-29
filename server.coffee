@@ -22,7 +22,7 @@ else
   process.on 'uncaughtException', (error) =>
     console.error error.message, error.stack
 
-app.set 'port', process.env.WEATHER_SERVICE_PORT ? process.env.PORT ? 3000
+app.set 'port', process.env.WEATHER_SERVICE_PORT ? process.env.PORT ? 80
 app.set 'views', path.join(__dirname, 'views')
 app.set 'view engine', 'jade'
 # app.use favicon(__dirname + '/public/favicon.ico'

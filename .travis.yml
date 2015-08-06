@@ -7,14 +7,3 @@ cache:
   directories:
   - node_modules
 env: NODE_ENV=test
-branches:
-  only:
-  - master
-deploy:
-  provider: opsworks
-  access_key_id: AKIAIT4X4NDGM2WVL6VA
-  secret_access_key:
-    secure: b5twQ2B6ccbzBGeuOB3hVYxxx7MBbVPOBlbNSJrAcsUr7xRW4hXvW5Lf56PPRB46oxbjTXkRCjZ1Z4GN9n65dQZ7hu4d4xIwrWJko0ED9OwE0JHBadyAWS/5YpwL54zRvzho4VIUYCkUo/g33JSDLnUVNfAJh8SWKgGyMkDEJWA=
-  app-id: b77a06c1-67a0-4f1c-a55e-1d955a4e15e0
-  on:
-    branch: master

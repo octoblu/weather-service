@@ -1,6 +1,6 @@
 {
   "name": "weather-service",
-  "version": "1.0.0",
+  "version": "1.0.1",
   "description": "Sane weather API",
   "main": "index.js",
   "scripts": {
@@ -27,6 +27,7 @@
     "coffee-script": "~1.8.0",
     "errorhandler": "~1.2.0",
     "express": "~4.9.4",
+    "express-meshblu-healthcheck": "^1.0.1",
     "express-session": "~1.8.2",
     "jade": "~1.7.0",
     "lodash": "~2.4.1",

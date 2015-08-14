@@ -1,6 +1,6 @@
 {
   "name": "weather-service",
-  "version": "1.0.1",
+  "version": "1.0.2",
   "description": "Sane weather API",
   "main": "index.js",
   "scripts": {

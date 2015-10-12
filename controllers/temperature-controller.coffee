@@ -29,6 +29,7 @@ class TemperatureController
       qs:
         units: units
         q: location
+        APPID: process.env.APPID
 
     request options, callback
 

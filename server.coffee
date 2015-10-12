@@ -14,6 +14,8 @@ meshbluHealthcheck = require 'express-meshblu-healthcheck'
 TemperatureController = require './controllers/temperature-controller'
 temperatureController = new TemperatureController()
 
+return console.error "MISSING APPID" unless process.env.APPID?
+
 app = express()
 
 app.use meshbluHealthcheck()

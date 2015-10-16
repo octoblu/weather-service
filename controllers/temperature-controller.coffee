@@ -30,11 +30,11 @@ class TemperatureController
 
   request: (location, callback=->) =>
     options =
-      url: 'http://openweathermap.org/data/2.3/forecast/city'
+      url: 'http://openweathermap.org/data/2.5/forecast/city'
       json: true
       qs:
-        cnt: 1
         q: location
+        APPID: process.env.APPID
     request options, callback
 
 module.exports = TemperatureController

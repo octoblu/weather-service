@@ -30,7 +30,7 @@ class TemperatureController
 
   request: (location, callback=->) =>
     options =
-      url: 'http://openweathermap.org/data/2.5/forecast/city'
+      url: 'http://api.openweathermap.org/data/2.5/forecast'
       json: true
       qs:
         q: location

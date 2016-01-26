@@ -11,6 +11,10 @@ multer         = require 'multer'
 errorHandler   = require 'errorhandler'
 meshbluHealthcheck = require 'express-meshblu-healthcheck'
 
+process.on 'SIGTERM', =>
+  console.log 'Dieing a clean, honorable death'
+  process.exit 0
+
 TemperatureController = require './controllers/temperature-controller'
 temperatureController = new TemperatureController()
 

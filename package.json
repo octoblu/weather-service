@@ -1,10 +1,10 @@
 {
   "name": "weather-service",
-  "version": "1.0.10",
+  "version": "1.0.11",
   "description": "Sane weather API",
   "main": "index.js",
   "scripts": {
-    "start": "coffee server.coffee",
+    "start": "node server.js",
     "test": "exit 0"
   },
   "repository": {

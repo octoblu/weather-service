@@ -7,7 +7,7 @@ class TemperatureController
     location = _.compact([city, state, country]).join ','
     @request location, (error, response, body={}) =>
       return res.status(500).send(error) if error?
-      kelvinTemp = body.list?[0]?.main?.temp
+      kelvinTemp = body.main?.temp
       temp = @kelvinToCelsius kelvinTemp if kelvinTemp?
       return res.status(500).send error: 'invalid response' unless temp?
       res.status(body.cod).send temperature: Math.round(temp * 1000) / 1000, city: city, state: state, country: country
@@ -17,7 +17,7 @@ class TemperatureController
     location = _.compact([city, state, country]).join ','
     @request location, (error, response, body={}) =>
       return res.status(500).send(error) if error?
-      kelvinTemp = body.list?[0]?.main?.temp
+      kelvinTemp = body.main?.temp
       temp = @kelvinToFahrenheit kelvinTemp if kelvinTemp?
       return res.status(500).send error: 'invalid response' unless temp?
       res.status(body.cod).send temperature: Math.round(temp * 1000) / 1000, city: city, state: state, country: country
@@ -30,7 +30,7 @@ class TemperatureController
 
   request: (location, callback=->) =>
     options =
-      url: 'http://api.openweathermap.org/data/2.5/forecast'
+      url: 'http://api.openweathermap.org/data/2.5/weather'
       json: true
       qs:
         q: location

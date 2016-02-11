@@ -1,6 +1,6 @@
 {
   "name": "weather-service",
-  "version": "1.1.1",
+  "version": "1.1.2",
   "description": "Sane weather API",
   "main": "index.js",
   "scripts": {
@@ -25,6 +25,7 @@
     "airbrake": "^0.3.8",
     "body-parser": "~1.9.0",
     "coffee-script": "~1.8.0",
+    "debug": "^2.2.0",
     "errorhandler": "~1.2.0",
     "express": "~4.9.4",
     "express-meshblu-healthcheck": "^1.0.1",

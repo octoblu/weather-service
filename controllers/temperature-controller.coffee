@@ -6,6 +6,9 @@ class TemperatureController
   celsius: (req, res) =>
     {city, state, country} = req.query
     location = _.compact([city, state, country]).join ','
+    if _.isEmpty location
+      return res.status(422).send error: 'At least one of [city, state, country] is required'
+
     @request location, (error, response, body={}) =>
       debug 'celsius', body
       return res.status(502).send(error) if error?
@@ -17,6 +20,9 @@ class TemperatureController
   fahrenheit: (req, res) =>
     {city, state, country} = req.query
     location = _.compact([city, state, country]).join ','
+    if _.isEmpty location
+      return res.status(422).send error: 'At least one of [city, state, country] is required'
+
     @request location, (error, response, body={}) =>
       debug 'fahrenheit', body
       return res.status(502).send(error) if error?

@@ -3,43 +3,80 @@ _       = require 'lodash'
 debug   = require('debug')('weather-service:temperature-controller')
 
 class TemperatureController
-  celsius: (req, res) =>
+  currentCelsius: (req, res) =>
     {city, state, country} = req.query
     location = _.compact([city, state, country]).join ','
     if _.isEmpty location
       return res.status(422).send error: 'At least one of [city, state, country] is required'
 
-    @request location, (error, response, body={}) =>
-      debug 'celsius', body
+    @request 'weather', location, (error, response, body={}) =>
+      debug 'current weather celsius', body
       return res.status(502).send(error) if error?
-      kelvinTemp = body.main?.temp
-      temp = @kelvinToCelsius kelvinTemp if kelvinTemp?
-      return res.status(502).send error: 'invalid response' unless temp?
-      res.status(body.cod).send temperature: Math.round(temp * 1000) / 1000, city: city, state: state, country: country
+      weatherObj = @convertItemToHuman body, @kelvinToCelsius
+      res.status(body.cod).send _.extend weatherObj, city: city, state: state, country: country
 
-  fahrenheit: (req, res) =>
+  currentFahrenheit: (req, res) =>
     {city, state, country} = req.query
     location = _.compact([city, state, country]).join ','
     if _.isEmpty location
       return res.status(422).send error: 'At least one of [city, state, country] is required'
 
-    @request location, (error, response, body={}) =>
-      debug 'fahrenheit', body
+    @request 'weather', location, (error, response, body={}) =>
+      debug 'current weather fahrenheit', body
       return res.status(502).send(error) if error?
-      kelvinTemp = body.main?.temp
-      temp = @kelvinToFahrenheit kelvinTemp if kelvinTemp?
-      return res.status(502).send error: 'invalid response' unless temp?
-      res.status(body.cod).send temperature: Math.round(temp * 1000) / 1000, city: city, state: state, country: country
+      weatherObj = @convertItemToHuman body, @kelvinToFahrenheit
+      res.status(body.cod).send _.extend weatherObj, city: city, state: state, country: country
+
+  forecastCelsius: (req, res) =>
+    {city, state, country} = req.query
+    location = _.compact([city, state, country]).join ','
+    if _.isEmpty location
+      return res.status(422).send error: 'At least one of [city, state, country] is required'
+    @request 'forecast', location, (error, response, body={}) =>
+      debug 'forecast celsius', body
+      return res.status(502).send(error) if error?
+      res.status(body.cod).send forecast: @convertListToHuman(body.list, @kelvinToCelsius), city: city, state: state, country: country
+
+  forecastFahrenheit: (req, res) =>
+    {city, state, country} = req.query
+    location = _.compact([city, state, country]).join ','
+    if _.isEmpty location
+      return res.status(422).send error: 'At least one of [city, state, country] is required'
+    @request 'forecast', location, (error, response, body={}) =>
+      debug 'forecast fahrenheit', body
+      return res.status(502).send(error) if error?
+      res.status(body.cod).send forecast: @convertListToHuman(body.list, @kelvinToFahrenheit), city: city, state: state, country: country
+
+  convertListToHuman: (list, tempConverter) =>
+    return _.map list, (listItem) =>
+      return @convertItemToHuman listItem, tempConverter
+
+  convertItemToHuman: (item, tempConverter) =>
+    return {
+      temperature: @roundTemp(tempConverter(item.main?.temp)),
+      temperature_min: @roundTemp(tempConverter(item.main?.temp_min)),
+      temperature_max: @roundTemp(tempConverter(item.main?.temp_max)),
+      pressure: item.main?.pressure,
+      humidity: item.main?.humidity,
+      weather: _.first(_.map item.weather, 'description')
+      wind:
+        speed: item.wind?.speed,
+        degrees: item.wind?.deg,
+      date: item.dt_txt
+    }
+
+  roundTemp: (temp) =>
+    return Math.round(temp * 1000) / 1000
 
   kelvinToFahrenheit: (value) =>
-    (@kelvinToCelsius(value) * 1.8) + 32
+    return (@kelvinToCelsius(value) * 1.8) + 32
 
   kelvinToCelsius: (value) =>
-    value - 273.15
+    return value - 273.15
 
-  request: (location, callback=->) =>
+  request: (endpoint, location, callback=->) =>
     options =
-      url: 'http://api.openweathermap.org/data/2.5/weather'
+      url: "http://api.openweathermap.org/data/2.5/#{endpoint}"
       json: true
       timeout: 5000
       qs:

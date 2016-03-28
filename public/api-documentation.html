@@ -37,10 +37,10 @@
         </p>
 
         <h4>Request</h4>
-<pre>GET /temperature/c
-GET /temperature/celsius
-GET /temperature/f
-GET /temperature/fahrenheit</pre>
+        <pre>GET /temperature/c
+        GET /temperature/celsius
+        GET /temperature/f
+        GET /temperature/fahrenheit</pre>
 
         <h4>Query Parameters</h4>
         <p class="indented">
@@ -69,9 +69,20 @@ GET /temperature/fahrenheit</pre>
             Status: 200 OK
           </div>
           <div class="panel-body">
-<pre>{
-  "temperature": 30.27
-}</pre>
+            <pre>{
+                "temperature": 65.876,
+                "temperature_min": 59,
+                "temperature_max": 72.32,
+                "pressure": 1012,
+                "humidity": 34,
+                "weather": "clear sky",
+                "wind": {
+                  "speed": 2.25,
+                  "degrees": 98.5002
+                },
+                "city": "Tempe",
+                "state": "AZ"
+              }</pre>
           </div>
         </div>
 
@@ -92,6 +103,595 @@ GET /temperature/fahrenheit</pre>
           <a href="/temperature/fahrenheit?city=quebec%20city&state=quebec&country=canada" class="btn btn-lg btn-black">Quebec City, Quebec, Canada</a>
         </p>
       </div>
+
+
+      <h4>Forecast</h4>
+
+      <p>
+        <strong>Get the 5 day, 3 hour forecast in celsius or fahrenheit</strong>
+        <br>
+        Supports single letter varients because spelling celsius and fahrenheit is hard
+      </p>
+
+      <h4>Request</h4>
+      <pre>GET /forecast/c
+      GET /forecast/celsius
+      GET /forecast/f
+      GET /forecast/fahrenheit</pre>
+
+      <h4>Query Parameters</h4>
+      <p class="indented">
+        <strong>city</strong>
+        <em class="text-danger">required</em>
+        <br>
+        <span class="indented">string</span>
+      </p>
+
+      <p class="indented">
+        <strong>state</strong>
+        <br>
+        <span class="indented">string</span>
+      </p>
+
+      <p class="indented">
+        <strong>country</strong>
+        <em class="text-danger">required</em>
+        <br>
+        <span class="indented">string</span>
+      </p>
+
+      <h4>Response</h4>
+      <div class="panel panel-default">
+        <div class="panel-heading">
+          Status: 200 OK
+        </div>
+        <div class="panel-body">
+          <pre>{
+            "forecast": [
+              {
+                "temperature": 28.54,
+                "temperature_min": 22.295,
+                "temperature_max": 28.54,
+                "pressure": 942.14,
+                "humidity": 29,
+                "weather": "clear sky",
+                "wind": {
+                  "speed": 3.86,
+                  "degrees": 187.501
+                },
+                "date": "2016-03-28 18:00:00"
+              },
+              {
+                "temperature": 30.21,
+                "temperature_min": 24.291,
+                "temperature_max": 30.21,
+                "pressure": 939.15,
+                "humidity": 24,
+                "weather": "few clouds",
+                "wind": {
+                  "speed": 5.51,
+                  "degrees": 210.003
+                },
+                "date": "2016-03-28 21:00:00"
+              },
+              {
+                "temperature": 27.81,
+                "temperature_min": 22.219,
+                "temperature_max": 27.81,
+                "pressure": 937.8,
+                "humidity": 23,
+                "weather": "broken clouds",
+                "wind": {
+                  "speed": 4.81,
+                  "degrees": 225.001
+                },
+                "date": "2016-03-29 00:00:00"
+              },
+              {
+                "temperature": 24.28,
+                "temperature_min": 19.017,
+                "temperature_max": 24.28,
+                "pressure": 937.89,
+                "humidity": 31,
+                "weather": "clear sky",
+                "wind": {
+                  "speed": 5.11,
+                  "degrees": 212.506
+                },
+                "date": "2016-03-29 03:00:00"
+              },
+              {
+                "temperature": 21.81,
+                "temperature_min": 16.875,
+                "temperature_max": 21.81,
+                "pressure": 939,
+                "humidity": 37,
+                "weather": "broken clouds",
+                "wind": {
+                  "speed": 5.3,
+                  "degrees": 207.505
+                },
+                "date": "2016-03-29 06:00:00"
+              },
+              {
+                "temperature": 19.18,
+                "temperature_min": 14.577,
+                "temperature_max": 19.18,
+                "pressure": 938.65,
+                "humidity": 49,
+                "weather": "overcast clouds",
+                "wind": {
+                  "speed": 4.31,
+                  "degrees": 207.007
+                },
+                "date": "2016-03-29 09:00:00"
+              },
+              {
+                "temperature": 15.79,
+                "temperature_min": 11.518,
+                "temperature_max": 15.79,
+                "pressure": 938.52,
+                "humidity": 35,
+                "weather": "broken clouds",
+                "wind": {
+                  "speed": 3.41,
+                  "degrees": 244.001
+                },
+                "date": "2016-03-29 12:00:00"
+              },
+              {
+                "temperature": 14.21,
+                "temperature_min": 10.262,
+                "temperature_max": 14.21,
+                "pressure": 940.84,
+                "humidity": 41,
+                "weather": "clear sky",
+                "wind": {
+                  "speed": 3.27,
+                  "degrees": 234.004
+                },
+                "date": "2016-03-29 15:00:00"
+              },
+              {
+                "temperature": 16.93,
+                "temperature_min": 13.312,
+                "temperature_max": 16.93,
+                "pressure": 941.84,
+                "humidity": 38,
+                "weather": "few clouds",
+                "wind": {
+                  "speed": 4.21,
+                  "degrees": 229.501
+                },
+                "date": "2016-03-29 18:00:00"
+              },
+              {
+                "temperature": 18.26,
+                "temperature_min": 14.969,
+                "temperature_max": 18.26,
+                "pressure": 940.72,
+                "humidity": 32,
+                "weather": "clear sky",
+                "wind": {
+                  "speed": 4.91,
+                  "degrees": 234.504
+                },
+                "date": "2016-03-29 21:00:00"
+              },
+              {
+                "temperature": 17.38,
+                "temperature_min": 14.419,
+                "temperature_max": 17.38,
+                "pressure": 940.05,
+                "humidity": 26,
+                "weather": "clear sky",
+                "wind": {
+                  "speed": 4.11,
+                  "degrees": 243.502
+                },
+                "date": "2016-03-30 00:00:00"
+              },
+              {
+                "temperature": 11.33,
+                "temperature_min": 8.699,
+                "temperature_max": 11.33,
+                "pressure": 941.26,
+                "humidity": 31,
+                "weather": "clear sky",
+                "wind": {
+                  "speed": 1.77,
+                  "degrees": 247
+                },
+                "date": "2016-03-30 03:00:00"
+              },
+              {
+                "temperature": 5.51,
+                "temperature_min": 3.213,
+                "temperature_max": 5.51,
+                "pressure": 942,
+                "humidity": 51,
+                "weather": "clear sky",
+                "wind": {
+                  "speed": 0.91,
+                  "degrees": 188.002
+                },
+                "date": "2016-03-30 06:00:00"
+              },
+              {
+                "temperature": 3.16,
+                "temperature_min": 1.192,
+                "temperature_max": 3.16,
+                "pressure": 941.55,
+                "humidity": 54,
+                "weather": "few clouds",
+                "wind": {
+                  "speed": 1.22,
+                  "degrees": 107.504
+                },
+                "date": "2016-03-30 09:00:00"
+              },
+              {
+                "temperature": 2.66,
+                "temperature_min": 1.013,
+                "temperature_max": 2.66,
+                "pressure": 941.39,
+                "humidity": 55,
+                "weather": "scattered clouds",
+                "wind": {
+                  "speed": 1.06,
+                  "degrees": 112
+                },
+                "date": "2016-03-30 12:00:00"
+              },
+              {
+                "temperature": 8.18,
+                "temperature_min": 6.867,
+                "temperature_max": 8.18,
+                "pressure": 942.52,
+                "humidity": 41,
+                "weather": "broken clouds",
+                "wind": {
+                  "speed": 1.15,
+                  "degrees": 113.003
+                },
+                "date": "2016-03-30 15:00:00"
+              },
+              {
+                "temperature": 14.18,
+                "temperature_min": 13.189,
+                "temperature_max": 14.18,
+                "pressure": 943.13,
+                "humidity": 32,
+                "weather": "broken clouds",
+                "wind": {
+                  "speed": 1.51,
+                  "degrees": 201.003
+                },
+                "date": "2016-03-30 18:00:00"
+              },
+              {
+                "temperature": 16.74,
+                "temperature_min": 16.086,
+                "temperature_max": 16.74,
+                "pressure": 941.8,
+                "humidity": 31,
+                "weather": "clear sky",
+                "wind": {
+                  "speed": 1.77,
+                  "degrees": 196.002
+                },
+                "date": "2016-03-30 21:00:00"
+              },
+              {
+                "temperature": 16.02,
+                "temperature_min": 15.695,
+                "temperature_max": 16.02,
+                "pressure": 941.2,
+                "humidity": 24,
+                "weather": "clear sky",
+                "wind": {
+                  "speed": 1.66,
+                  "degrees": 244.505
+                },
+                "date": "2016-03-31 00:00:00"
+              },
+              {
+                "temperature": 6.894,
+                "temperature_min": 6.894,
+                "temperature_max": 6.894,
+                "pressure": 942.33,
+                "humidity": 44,
+                "weather": "clear sky",
+                "wind": {
+                  "speed": 0.95,
+                  "degrees": 264.004
+                },
+                "date": "2016-03-31 03:00:00"
+              },
+              {
+                "temperature": 2.226,
+                "temperature_min": 2.226,
+                "temperature_max": 2.226,
+                "pressure": 943.22,
+                "humidity": 55,
+                "weather": "clear sky",
+                "wind": {
+                  "speed": 1.06,
+                  "degrees": 310.503
+                },
+                "date": "2016-03-31 06:00:00"
+              },
+              {
+                "temperature": 1.334,
+                "temperature_min": 1.334,
+                "temperature_max": 1.334,
+                "pressure": 943.25,
+                "humidity": 54,
+                "weather": "broken clouds",
+                "wind": {
+                  "speed": 1.16,
+                  "degrees": 21.5009
+                },
+                "date": "2016-03-31 09:00:00"
+              },
+              {
+                "temperature": 3.706,
+                "temperature_min": 3.706,
+                "temperature_max": 3.706,
+                "pressure": 943.37,
+                "humidity": 51,
+                "weather": "broken clouds",
+                "wind": {
+                  "speed": 1.17,
+                  "degrees": 50.5014
+                },
+                "date": "2016-03-31 12:00:00"
+              },
+              {
+                "temperature": 8.094,
+                "temperature_min": 8.094,
+                "temperature_max": 8.094,
+                "pressure": 944.79,
+                "humidity": 41,
+                "weather": "broken clouds",
+                "wind": {
+                  "speed": 1.06,
+                  "degrees": 75.0004
+                },
+                "date": "2016-03-31 15:00:00"
+              },
+              {
+                "temperature": 16.115,
+                "temperature_min": 16.115,
+                "temperature_max": 16.115,
+                "pressure": 945.3,
+                "humidity": 31,
+                "weather": "broken clouds",
+                "wind": {
+                  "speed": 1.32,
+                  "degrees": 288.012
+                },
+                "date": "2016-03-31 18:00:00"
+              },
+              {
+                "temperature": 18.044,
+                "temperature_min": 18.044,
+                "temperature_max": 18.044,
+                "pressure": 943.71,
+                "humidity": 28,
+                "weather": "scattered clouds",
+                "wind": {
+                  "speed": 2.43,
+                  "degrees": 269.501
+                },
+                "date": "2016-03-31 21:00:00"
+              },
+              {
+                "temperature": 17.317,
+                "temperature_min": 17.317,
+                "temperature_max": 17.317,
+                "pressure": 943.84,
+                "humidity": 24,
+                "weather": "broken clouds",
+                "wind": {
+                  "speed": 2.2,
+                  "degrees": 314.501
+                },
+                "date": "2016-04-01 00:00:00"
+              },
+              {
+                "temperature": 11.009,
+                "temperature_min": 11.009,
+                "temperature_max": 11.009,
+                "pressure": 944.88,
+                "humidity": 39,
+                "weather": "few clouds",
+                "wind": {
+                  "speed": 0.27,
+                  "degrees": 15.0005
+                },
+                "date": "2016-04-01 03:00:00"
+              },
+              {
+                "temperature": 4.286,
+                "temperature_min": 4.286,
+                "temperature_max": 4.286,
+                "pressure": 946.05,
+                "humidity": 57,
+                "weather": "clear sky",
+                "wind": {
+                  "speed": 0.61,
+                  "degrees": 350
+                },
+                "date": "2016-04-01 06:00:00"
+              },
+              {
+                "temperature": 1.548,
+                "temperature_min": 1.548,
+                "temperature_max": 1.548,
+                "pressure": 946.13,
+                "humidity": 71,
+                "weather": "clear sky",
+                "wind": {
+                  "speed": 1.16,
+                  "degrees": 23.0035
+                },
+                "date": "2016-04-01 09:00:00"
+              },
+              {
+                "temperature": 0.17,
+                "temperature_min": 0.17,
+                "temperature_max": 0.17,
+                "pressure": 946.32,
+                "humidity": 71,
+                "weather": "clear sky",
+                "wind": {
+                  "speed": 1.17,
+                  "degrees": 23.502
+                },
+                "date": "2016-04-01 12:00:00"
+              },
+              {
+                "temperature": 7.575,
+                "temperature_min": 7.575,
+                "temperature_max": 7.575,
+                "pressure": 947.84,
+                "humidity": 48,
+                "weather": "clear sky",
+                "wind": {
+                  "speed": 1.16,
+                  "degrees": 28.5002
+                },
+                "date": "2016-04-01 15:00:00"
+              },
+              {
+                "temperature": 19.748,
+                "temperature_min": 19.748,
+                "temperature_max": 19.748,
+                "pressure": 948.18,
+                "humidity": 30,
+                "weather": "clear sky",
+                "wind": {
+                  "speed": 1.52,
+                  "degrees": 328.507
+                },
+                "date": "2016-04-01 18:00:00"
+              },
+              {
+                "temperature": 22.317,
+                "temperature_min": 22.317,
+                "temperature_max": 22.317,
+                "pressure": 946.56,
+                "humidity": 27,
+                "weather": "clear sky",
+                "wind": {
+                  "speed": 1.76,
+                  "degrees": 263
+                },
+                "date": "2016-04-01 21:00:00"
+              },
+              {
+                "temperature": 22.729,
+                "temperature_min": 22.729,
+                "temperature_max": 22.729,
+                "pressure": 945.53,
+                "humidity": 22,
+                "weather": "clear sky",
+                "wind": {
+                  "speed": 2.46,
+                  "degrees": 273.001
+                },
+                "date": "2016-04-02 00:00:00"
+              },
+              {
+                "temperature": 13.033,
+                "temperature_min": 13.033,
+                "temperature_max": 13.033,
+                "pressure": 947,
+                "humidity": 37,
+                "weather": "clear sky",
+                "wind": {
+                  "speed": 1.36,
+                  "degrees": 234.001
+                },
+                "date": "2016-04-02 03:00:00"
+              },
+              {
+                "temperature": 6.67,
+                "temperature_min": 6.67,
+                "temperature_max": 6.67,
+                "pressure": 948.68,
+                "humidity": 54,
+                "weather": "clear sky",
+                "wind": {
+                  "speed": 0.93,
+                  "degrees": 159.5
+                },
+                "date": "2016-04-02 06:00:00"
+              },
+              {
+                "temperature": 4.298,
+                "temperature_min": 4.298,
+                "temperature_max": 4.298,
+                "pressure": 949.32,
+                "humidity": 62,
+                "weather": "clear sky",
+                "wind": {
+                  "speed": 1.07,
+                  "degrees": 79.0016
+                },
+                "date": "2016-04-02 09:00:00"
+              },
+              {
+                "temperature": 2.942,
+                "temperature_min": 2.942,
+                "temperature_max": 2.942,
+                "pressure": 949.77,
+                "humidity": 68,
+                "weather": "clear sky",
+                "wind": {
+                  "speed": 1.16,
+                  "degrees": 52.5082
+                },
+                "date": "2016-04-02 12:00:00"
+              },
+              {
+                "temperature": 10.283,
+                "temperature_min": 10.283,
+                "temperature_max": 10.283,
+                "pressure": 951.2,
+                "humidity": 47,
+                "weather": "clear sky",
+                "wind": {
+                  "speed": 1.06,
+                  "degrees": 48.0014
+                },
+                "date": "2016-04-02 15:00:00"
+              }
+            ],
+            "city": "Tempe",
+            "state": "AZ"
+          }</pre>
+        </div>
+      </div>
+
+      <h4>Try It</h4>
+      <p><em>Celsius</em></p>
+      <p class="go-slow-btns">
+        <a href="/forecast/celsius?city=chandler&state=az&country=usa" class="btn btn-lg btn-black">Chandler, AZ, USA</a>
+        <a href="/forecast/celsius?city=paris&country=france" class="btn btn-lg btn-black">Paris, France</a>
+        <a href="/forecast/celsius?city=quebec%20city&state=quebec&country=canada" class="btn btn-lg btn-black">Quebec City, Quebec, Canada</a>
+      </p>
+
+      <br>
+
+      <p><em>Farenheit</em></p>
+      <p class="go-slow-btns">
+        <a href="/forecast/fahrenheit?city=chandler&state=az&country=usa" class="btn btn-lg btn-black">Chandler, AZ, USA</a>
+        <a href="/forecast/fahrenheit?city=paris&country=france" class="btn btn-lg btn-black">Paris, France</a>
+        <a href="/forecast/fahrenheit?city=quebec%20city&state=quebec&country=canada" class="btn btn-lg btn-black">Quebec City, Quebec, Canada</a>
+      </p>
+    </div>
     </div>
   </div>
 

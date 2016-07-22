@@ -13,7 +13,6 @@ expressVersion     = require 'express-package-version'
 meshbluHealthcheck = require 'express-meshblu-healthcheck'
 sendError          = require 'express-send-error'
 
-
 TemperatureController = require './controllers/temperature-controller'
 temperatureController = new TemperatureController()
 

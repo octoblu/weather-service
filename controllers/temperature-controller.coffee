@@ -1,5 +1,5 @@
-request = require 'request'
 _       = require 'lodash'
+request = require 'request'
 debug   = require('debug')('weather-service:temperature-controller')
 
 class TemperatureController

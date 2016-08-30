@@ -1,17 +1,16 @@
 #!/usr/bin/env coffee
 
-express            = require 'express'
 path               = require 'path'
-compression        = require 'compression'
-favicon            = require 'serve-favicon'
+multer             = require 'multer'
 morgan             = require 'morgan'
+express            = require 'express'
+compression        = require 'compression'
+bodyParser         = require 'body-parser'
+favicon            = require 'serve-favicon'
 OctobluRaven       = require 'octoblu-raven'
 methodOverride     = require 'method-override'
-bodyParser         = require 'body-parser'
-multer             = require 'multer'
 expressVersion     = require 'express-package-version'
 meshbluHealthcheck = require 'express-meshblu-healthcheck'
-sendError          = require 'express-send-error'
 
 TemperatureController = require './controllers/temperature-controller'
 temperatureController = new TemperatureController()
@@ -22,14 +21,13 @@ app = express()
 app.use compression()
 octobluRaven = new OctobluRaven
 octobluRaven.patchGlobal()
-app.use octobluRaven.express().handleErrors()
-app.use sendError()
+octobluRaven.expressBundle({ app })
 app.use expressVersion({format: '{"version": "%s"}'})
 app.use meshbluHealthcheck()
 app.set 'port', process.env.WEATHER_SERVICE_PORT ? process.env.PORT ? 80
 app.set 'views', path.join(__dirname, 'views')
 app.set 'view engine', 'jade'
-# app.use favicon(__dirname + '/public/favicon.ico'
+
 skip = (request, response) =>
   return response.statusCode < 400
 app.use morgan 'dev', { immediate: false, skip }

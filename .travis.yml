@@ -5,9 +5,4 @@ branches:
   only:
   - /^v[0-9]/
 notifications:
-  webhooks:
-    urls:
-    - https://deploy-state.octoblu.com/deployments/travis-ci
-    on_success: 'always'
-    on_failure: 'always'
-    on_start:   'always'
+  webhooks: https://deploy-state.octoblu.com/deployments/travis-ci/org

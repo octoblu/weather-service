@@ -1,9 +1,10 @@
-sudo: false
 language: node_js
 node_js:
-- '0.10'
-cache:
-  bundler: true
-  directories:
-  - node_modules
-env: NODE_ENV=test
+- '5'
+notifications:
+  webhooks:
+    urls:
+    - https://deploy-state.octoblu.com/deployments/travis-ci
+    on_success: 'always'
+    on_failure: 'always'
+    on_start:   'always'

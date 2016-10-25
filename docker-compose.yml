@@ -1,0 +1,16 @@
+weather-service:
+  container_name: "weather"
+  build: .
+  ports:
+   - "80"
+
+  volumes:
+  - /usr/src/app/node_modules
+  - .:/usr/src/app
+
+  environment:
+   APPID: "f31deb99124fe64c8b6d0a50f6d3f459"
+   DEBUG: "nothing"
+   MESHBLU_HOST: "meshblu.octoblu.com"
+   MESHBLU_PORT: "443"
+   MESHBLU_PROTOCOL: "https"
